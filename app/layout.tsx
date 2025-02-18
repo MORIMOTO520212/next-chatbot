@@ -21,7 +21,12 @@ export const metadata: Metadata = {
   description: 'Chatbot with Next.js',
 };
 
-const theme = createTheme({});
+const theme = createTheme({
+  colors: {
+    primary: ['#000000', '#1e1e1e'],
+  },
+  primaryShade: 0,
+});
 
 export default function RootLayout({
   children,
@@ -29,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="jp">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
