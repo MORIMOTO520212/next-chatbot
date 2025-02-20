@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import '@mantine/core/styles.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { createTheme, MantineProvider } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import { DefaultLayout } from '@/components/layouts/DefaultLayout';
+import { theme } from './theme';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,13 +21,6 @@ export const metadata: Metadata = {
   title: 'Next Chatbot',
   description: 'Chatbot with Next.js',
 };
-
-const theme = createTheme({
-  colors: {
-    primary: ['#000000', '#1e1e1e'],
-  },
-  primaryShade: 0,
-});
 
 export default function RootLayout({
   children,
