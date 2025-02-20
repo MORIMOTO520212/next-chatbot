@@ -19,9 +19,11 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@mantine/colors-generator": "^7.17.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chroma-js": "^3.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8.5.1",
