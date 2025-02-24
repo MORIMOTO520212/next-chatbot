@@ -4,9 +4,8 @@ import { FormEventHandler } from 'react';
 
 type Props = {
   type: 1 | 2; // 1: 画像入力, 2: 食材決定
-  label: string;
   onClick?: FormEventHandler<HTMLButtonElement>;
-  onChange?: (payload: File | null) => void;
+  onChange?: (file: File[]) => void;
 };
 
 export const FooterButton = ({ type, onClick, onChange }: Props) => {
@@ -15,7 +14,7 @@ export const FooterButton = ({ type, onClick, onChange }: Props) => {
       <div className="mb-6">
         {type === 1 ? (
           !!onChange ? (
-            <FileButton onChange={onChange}>
+            <FileButton multiple onChange={onChange}>
               {(props) => (
                 <Button
                   {...props}
