@@ -35,7 +35,9 @@ export const RecipeList = () => {
     console.log('generate recipe result:', recipeData);
   }, []);
 
-  const onSubmit = () => {};
+  const onSubmit = (recipeId: number) => {
+    router.push(`/recipedetail?id=${recipeId}`);
+  };
 
   return (
     <>
@@ -53,11 +55,11 @@ export const RecipeList = () => {
       <div className="pt-[20[px] mt-[71px] overflow-hidden">
         <main className="mx-[20px] mt-[20px]">
           <ul>
-            {recipeData.map((item) => (
+            {recipeData.map((item, i) => (
               <li
                 className="mt-[24px] flex list-none gap-5 border-b border-[#ded6ca] pb-3 text-[14px] font-bold text-[#ef797b]"
                 key={item.title}
-                onClick={() => onSubmit()}
+                onClick={() => onSubmit(i)}
               >
                 <div className="relative h-[100px] w-[100px]">
                   <Image
