@@ -24,7 +24,7 @@ type Recipe = {
 
 export const RecipeList = () => {
   const router = useRouter();
-  const { selectedFoods, setSelectedFoods } = useFoodsState();
+  const { selectedFoods } = useFoodsState();
   const { generateRecipe } = useGenerateRecipe();
   const [recipeData, setRecipeData] = useState<Recipe>([]);
 
