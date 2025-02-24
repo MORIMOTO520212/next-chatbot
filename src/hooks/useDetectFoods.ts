@@ -1,5 +1,5 @@
 import { DataContent } from 'ai';
-import { generateText } from '@/app/actions/generateText';
+import { detectFoods as _detectFoods } from '@/app/actions/completions';
 import { Foods } from '@/types/Foods';
 import { QueryMessage } from '@/types/QueryMessage';
 import { useSearchImage } from './useSearchImage';
@@ -33,7 +33,7 @@ export const useDetectFoods = () => {
       },
     ];
 
-    const result = await generateText({ messages });
+    const result = await _detectFoods({ messages });
 
     const foods = await Promise.all(
       result.toolCalls

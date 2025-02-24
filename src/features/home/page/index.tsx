@@ -16,7 +16,6 @@ export const Home = () => {
   const { detectFoods } = useDetectFoods();
 
   const handleUploadButton = async (file: File[]) => {
-    console.log('processing');
     const dataUrls = await convertImageToDataUrl(file);
     const foods = await detectFoods({ dataUrls });
     console.log(foods);
