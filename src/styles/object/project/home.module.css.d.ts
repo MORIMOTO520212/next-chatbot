@@ -4,6 +4,7 @@ declare const styles: {
   readonly "image-jump-button__img": string;
   readonly "jump-button": string;
   readonly "recipe": string;
+  readonly "recipe__img": string;
   readonly "reco-icon": string;
   readonly "recommend-recipe": string;
   readonly "recommend-recipe-title": string;

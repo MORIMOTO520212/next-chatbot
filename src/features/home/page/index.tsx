@@ -56,6 +56,7 @@ export const Home = () => {
                   src={recipe.src}
                   alt={recipe.alt}
                   fill
+                  priority={true}
                 />
               </div>
               <div className="flex-1">
@@ -85,6 +86,7 @@ export const Home = () => {
                   src={recipe.src}
                   alt={recipe.alt}
                   fill
+                  priority={true}
                 />
               </div>
               <div className="flex-1">

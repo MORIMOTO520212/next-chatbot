@@ -31,10 +31,11 @@ export const useSearchImage = (provider: Provider = 'wikipedia') => {
 
       const data = await result.json();
       const pages: Pages = Object.values(data.query.pages);
-
-      console.log('pages: ', pages);
+      console.log(pages);
       const thumbnailUrl =
-        pages.find((page) => page.index === 1)?.thumbnail.source || '';
+        pages.find((page) => page.index === 1)?.thumbnail?.source ||
+        pages.find((page) => page.index === 2)?.thumbnail?.source ||
+        pages.find((page) => page.index === 3)?.thumbnail?.source;
       return thumbnailUrl;
     } else {
       const result = await fetch(

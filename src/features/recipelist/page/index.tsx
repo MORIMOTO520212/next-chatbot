@@ -10,29 +10,19 @@ import {
   IconToolsKitchen2,
 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
-
-type Recipe = {
-  title: string;
-  time: number;
-  kcal: number;
-  difficulty: number;
-  catchcopy: string;
-  thumbnailUrl: string;
-}[];
+import { useRecipeState } from '@/hooks/useRecipeState';
+import { Recipe } from '@/types/Recipe';
 
 export const RecipeList = () => {
   const router = useRouter();
   const { selectedFoods } = useFoodsState();
   const { generateRecipe } = useGenerateRecipe();
-  const [recipeData, setRecipeData] = useState<Recipe>([]);
+  const { recipes, setRecipes } = useRecipeState();
 
   useEffect(() => {
-    generateRecipe(selectedFoods).then((recipe: Recipe) =>
-      setRecipeData(recipe),
-    );
-    console.log('generate recipe result:', recipeData);
+    generateRecipe(selectedFoods).then((recipe: Recipe) => setRecipes(recipe));
   }, []);
 
   const onSubmit = (recipeId: number) => {
@@ -55,7 +45,7 @@ export const RecipeList = () => {
       <div className="pt-[20[px] mt-[71px] overflow-hidden">
         <main className="mx-[20px] mt-[20px]">
           <ul>
-            {recipeData.map((item, i) => (
+            {recipes.map((item, i) => (
               <li
                 className="mt-[24px] flex list-none gap-5 border-b border-[#ded6ca] pb-3 text-[14px] font-bold text-[#ef797b]"
                 key={item.title}
@@ -64,9 +54,10 @@ export const RecipeList = () => {
                 <div className="relative h-[100px] w-[100px]">
                   <Image
                     className="object-cover"
-                    src={item.thumbnailUrl}
+                    src={item.thumbnailUrl || ''}
                     alt=""
                     fill
+                    priority={true}
                   />
                 </div>
                 <div className="m-0 mr-auto w-[205px] text-left">

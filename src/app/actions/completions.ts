@@ -83,3 +83,48 @@ export const generateRecipe = async (foods: string[]) => {
     toolCalls: result.toolCalls,
   };
 };
+
+export const generateRecipeDetail = async (recipeName: string) => {
+  const messages: QueryMessage = [
+    {
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: `${recipeName}\nこのレシピに必要な1人前の材料を考えてください。また、ステップバイステップでこのレシピを作るための手順を考えてください。最後に、recipe関数を呼び出して終了します。`,
+        },
+      ],
+    },
+  ];
+  const tools = {
+    recipe: tool({
+      parameters: z.object({
+        ingredients: z
+          .array(z.string())
+          .describe('レシピに必要な材料のリストを渡します。'),
+        amount: z
+          .array(z.string())
+          .describe(
+            '材料の使用量をリストで渡します。例えば、1-2個、小さじ1/2、3本など。',
+          ),
+        cookingInstructions: z
+          .array(z.string())
+          .describe(
+            'レシピを作るための手順をリストで渡します。手順の順番はリストの手前から始まることに注意してください。',
+          ),
+      }),
+    }),
+  };
+
+  const result = await chatCompletion({
+    model: openai('gpt-4o'),
+    messages,
+    tools,
+    maxTokens: 1000,
+  });
+
+  return {
+    message: result.response.messages[0].content,
+    toolCalls: result.toolCalls,
+  };
+};

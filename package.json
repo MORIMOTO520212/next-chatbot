@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tcm": "tcm src/styles/**/*"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.1.13",
@@ -35,6 +36,7 @@
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.1",
+    "typed-css-modules": "^0.9.1",
     "typescript": "^5"
   }
 }
