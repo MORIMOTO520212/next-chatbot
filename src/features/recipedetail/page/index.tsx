@@ -13,7 +13,6 @@ import { useRecipeState } from '@/hooks/useRecipeState';
 import { useGenerateRecipeDetail } from '@/hooks/useGenerateRecipeDetail';
 import { useEffect, useState } from 'react';
 import { RecipeMethod } from '@/types/RecipeMethod';
-import styles from '@/styles/object/project/recipeDetail.module.css';
 
 export const RecipeDetail = () => {
   const router = useRouter();
@@ -44,12 +43,14 @@ export const RecipeDetail = () => {
       </header>
       <div className="pt-[20[px] mt-[67px] overflow-hidden">
         <div className="relative h-[250px] w-screen">
-          <Image
-            src={recipeDetail.thumbnailUrl || ''}
-            className="object-cover"
-            alt="recipe image"
-            fill
-          />
+          {!!recipeDetail.thumbnailUrl ? (
+            <Image
+              src={recipeDetail.thumbnailUrl}
+              className="object-cover"
+              alt="レシピ写真"
+              fill
+            />
+          ) : null}
         </div>
         <main className="mx-[25px]">
           <div className="mx-auto mt-0 max-w-[353px]">

@@ -17,7 +17,6 @@ export const useGenerateRecipe = () => {
         )
         .flat(),
     );
-    console.log('recipes:', recipes);
     return recipes;
   };
   return {

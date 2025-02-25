@@ -18,7 +18,6 @@ export const Home = () => {
   const handleUploadButton = async (file: File[]) => {
     const dataUrls = await convertImageToDataUrl(file);
     const foods = await detectFoods({ dataUrls });
-    console.log(foods);
     if (foods && foods.length > 0) {
       setFoods(foods);
       router.push('/selectfoods');

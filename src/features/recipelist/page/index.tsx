@@ -52,13 +52,15 @@ export const RecipeList = () => {
                 onClick={() => onSubmit(i)}
               >
                 <div className="relative h-[100px] w-[100px]">
-                  <Image
-                    className="object-cover"
-                    src={item.thumbnailUrl || ''}
-                    alt=""
-                    fill
-                    priority={true}
-                  />
+                  {!!item.thumbnailUrl ? (
+                    <Image
+                      className="object-cover"
+                      src={item.thumbnailUrl}
+                      alt="レシピ写真"
+                      fill
+                      priority={true}
+                    />
+                  ) : null}
                 </div>
                 <div className="m-0 mr-auto w-[205px] text-left">
                   <div>
