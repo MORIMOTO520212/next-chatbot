@@ -6,6 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { theme } from './theme';
+import { Authenticator } from '@/components/Authenticator';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +35,9 @@ export default function RootLayout({
       >
         <MantineProvider theme={theme}>
           <Provider>
-            <DefaultLayout>{children}</DefaultLayout>
+            <Authenticator>
+              <DefaultLayout>{children}</DefaultLayout>
+            </Authenticator>
           </Provider>
         </MantineProvider>
       </body>

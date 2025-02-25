@@ -35,6 +35,8 @@ export const useSearchImage = (provider: Provider = 'wikipedia') => {
         pages.find((page) => page.index === 1)?.thumbnail?.source ||
         pages.find((page) => page.index === 2)?.thumbnail?.source ||
         pages.find((page) => page.index === 3)?.thumbnail?.source;
+      console.log('pages:', pages);
+      console.log('thumbnailUrl:', thumbnailUrl);
       return thumbnailUrl;
     } else {
       const result = await fetch(
