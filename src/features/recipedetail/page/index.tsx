@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon } from '@mantine/core';
+import { ActionIcon, Badge } from '@mantine/core';
 import Image from 'next/image';
 import {
   IconChevronLeft,
@@ -108,14 +108,17 @@ export const RecipeDetail = () => {
               <h2 className="mb-[12px] mt-[28px] text-[16px] font-bold text-[#ef797b]">
                 作り方
               </h2>
-              <ol className={styles.ol}>
+              <ol>
                 {recipeMethod?.cookingInstructions.map((item, i) => (
                   <li
                     key={i}
                     v-for="instruction in recipeData.cooking_instructions"
-                    className={`${styles.list} relative mb-[18px] border-b border-[#ececec] pb-[16px] pl-[27px] text-[14px] font-normal text-[#442a00]`}
+                    className={`mb-[18px] flex items-start gap-3 border-b border-[#ececec] pb-[16px] text-[14px] font-normal text-[#442a00]`}
                   >
-                    {item}
+                    <Badge size="lg" circle>
+                      {i + 1}
+                    </Badge>
+                    <span className="flex-1">{item}</span>
                   </li>
                 ))}
               </ol>
