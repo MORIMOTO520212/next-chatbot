@@ -33,13 +33,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* <Authenticator> */}
+        {/* <ConfigureAmplifyClientSide /> */}
         <MantineProvider theme={theme}>
           <Provider>
-            <Authenticator>
               <DefaultLayout>{children}</DefaultLayout>
-            </Authenticator>
           </Provider>
         </MantineProvider>
+        {/* </Authenticator> */}
       </body>
     </html>
   );
