@@ -7,6 +7,7 @@ import { Provider } from 'jotai';
 import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { theme } from './theme';
 import { Authenticator } from '@/components/Authenticator';
+import { ConfigureAmplifyClientSide } from '@/components/ConfigureAmplifyClientSide';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,14 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <Authenticator> */}
-        {/* <ConfigureAmplifyClientSide /> */}
         <MantineProvider theme={theme}>
           <Provider>
+            <Authenticator>
+              <ConfigureAmplifyClientSide />
               <DefaultLayout>{children}</DefaultLayout>
+            </Authenticator>
           </Provider>
         </MantineProvider>
-        {/* </Authenticator> */}
       </body>
     </html>
   );
